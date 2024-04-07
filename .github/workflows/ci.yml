@@ -1,0 +1,23 @@
+
+name: "CI"
+on: [push]
+
+jobs:
+  ci:
+    name: "CI"
+    runs-on: ubuntu-latest
+    container: maven:3.8.6-openjdk-8
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Test"
+        run: |
+            mvn -B -e test -pl activemq-client
+      - name: "Build"
+        run: |
+            mvn -U -B -e clean install -DskipTests
+      - name: "Upload jars"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "jars"
+          path: "**/*.jar"
