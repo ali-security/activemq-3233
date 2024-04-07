@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.apache.activemq</groupId>
     <artifactId>activemq-parent</artifactId>
-    <version>5.16.5</version>
+    <version>5.16.5+sp1</version>
   </parent>
 
   <artifactId>activemq-client</artifactId>
@@ -267,6 +267,17 @@
                   </configuration>
               </execution>
           </executions>
+      </plugin>
+      <!-- generate the attached tests jar -->
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
     <pluginManagement>

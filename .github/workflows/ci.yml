@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: "Test"
         run: |
-            mvn -B -e test -pl activemq-client
+            mvn -B -e test -pl activemq-openwire-legacy
       - name: "Build"
         run: |
             mvn -U -B -e clean install -DskipTests
